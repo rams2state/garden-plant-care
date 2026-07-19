@@ -1906,6 +1906,26 @@ function openCare(id, pushHistory = true) {
         </div>
       </div>
 
+      ${(p.attracts && p.attracts.length > 0) || (p.repels && p.repels.length > 0) ? `
+      <div class="attract-repel-row">
+        <div class="ar-card attracts">
+          <h3>🐝 Attracts</h3>
+          <div class="ar-tags">
+            ${p.attracts && p.attracts.length > 0
+              ? p.attracts.map(a => `<span class="ar-tag">${a}</span>`).join('')
+              : '<span class="ar-empty">None noted</span>'}
+          </div>
+        </div>
+        <div class="ar-card repels">
+          <h3>🚫 Repels</h3>
+          <div class="ar-tags">
+            ${p.repels && p.repels.length > 0
+              ? p.repels.map(r => `<span class="ar-tag">${r}</span>`).join('')
+              : '<span class="ar-empty">None noted</span>'}
+          </div>
+        </div>
+      </div>` : ''}
+
       <div class="pet-card ${petClass}">
         <div class="pet-icon">${petIcon}</div>
         <div class="pet-info">
@@ -1940,26 +1960,6 @@ function openCare(id, pushHistory = true) {
         <h2>✨ Care Tips</h2>
         ${tipsHtml}
       </div>
-
-      ${(p.attracts && p.attracts.length > 0) || (p.repels && p.repels.length > 0) ? `
-      <div class="attract-repel-row">
-        <div class="ar-card attracts">
-          <h3>🐝 Attracts</h3>
-          <div class="ar-tags">
-            ${p.attracts && p.attracts.length > 0
-              ? p.attracts.map(a => `<span class="ar-tag">${a}</span>`).join('')
-              : '<span class="ar-empty">None noted</span>'}
-          </div>
-        </div>
-        <div class="ar-card repels">
-          <h3>🚫 Repels</h3>
-          <div class="ar-tags">
-            ${p.repels && p.repels.length > 0
-              ? p.repels.map(r => `<span class="ar-tag">${r}</span>`).join('')
-              : '<span class="ar-empty">None noted</span>'}
-          </div>
-        </div>
-      </div>` : ''}
 
       ${actionBtn}
     </div>`;
